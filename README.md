@@ -1,6 +1,6 @@
 # Devora AI | Your Intelligent AI Assistant Platform
 
-Devora AI is a production-ready, highly secure, and elegant AI companion dashboard styled with a modern dark theme and glassmorphic panels. It offers streaming completions, Stable Diffusion image generations, speech synthesis, document summarization, and specialized productivity tools.
+Devora AI is a production-ready, highly secure, and elegant AI companion dashboard styled with a modern dark theme and glassmorphic panels. It offers streaming completions, FLUX.1 and Stable Diffusion image generations, speech synthesis, document summarization, and specialized productivity tools.
 
 ---
 
@@ -17,7 +17,7 @@ Devora AI is structured as a monorepo splits into three main layers:
 
 - **Frontend Core**: React 18 (Vite) + Tailwind CSS + Lucide Icons + Framer Motion (micro-animations). State handled via **Zustand** stores for instant client updates.
 - **Express Database Server**: Manages user registrations, login hashes, JWT cookies verification, Google Auth callbacks, chat history database logging, and image uploads to **Cloudinary**.
-- **FastAPI AI Server**: Focuses strictly on heavy AI calculations. Utilizes Server-Sent Events (SSE) to stream Gemini content line-by-line, calls Stable Diffusion endpoints, extracts PDF/CSV spreadsheet data, and synthesizes vocals.
+- **FastAPI AI Server**: Focuses strictly on heavy AI calculations. Utilizes Server-Sent Events (SSE) to stream Gemini content line-by-line, calls FLUX.1/Stable Diffusion endpoints, extracts PDF/CSV spreadsheet data, and synthesizes vocals.
 
 ---
 
@@ -60,12 +60,8 @@ Create a file named `.env` in the `/backend` folder:
 ```env
 PORT=5000
 NODE_ENV=development
-MONGO_URI=mongodb://localhost:27017/devora_ai
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/devora_ai
 JWT_SECRET=your_jwt_secret_key_here
-GOOGLE_CLIENT_ID=your_google_oauth_client_id
-CLOUDINARY_CLOUD_NAME=your_cloudinary_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 CLIENT_URL=http://localhost:5173
 ```
 
@@ -74,6 +70,7 @@ Create a file named `.env` in the `/fastapi-ai` folder:
 ```env
 PORT=8000
 GEMINI_API_KEY=your_gemini_api_key_from_google_ai_studio
+HF_API_KEY=your_huggingface_access_token_here
 ```
 
 ---
